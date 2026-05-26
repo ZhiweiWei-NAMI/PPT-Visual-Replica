@@ -45,8 +45,29 @@ Below is a representative primary example. The left image is the original refere
 
 ## Known Issues and Recommendations
 
+The current workflow is runnable, but several automation gaps are good contribution targets:
+
+* **Asset inventory confirmation:** when a reference contains many semantic assets, the model may undercount or miss small icons, micro charts, and local decorative marks. After generating green-screen asset grids and cutting them into individual assets, the workflow should produce `asset_review_wall.png` and `asset_review.json` so the user can confirm whether any assets are missing before PPT assembly.
+* **Layered generation strategy:** large panels, UI screenshots, and scene backgrounds should be generated individually, while small icons and simple pictograms are better suited for batched grids to avoid losing detail.
+* **More robust transparent cutting:** green-screen connected-component cutting works well for isolated icons, but assets with internal green regions may lose their own green details during background removal. The workflow should keep a post-cut asset wall so the user can confirm whether any green object details were removed; if needed, regenerate with a different background color.
+* **Automated text reconstruction:** dense text still depends on manual layout. OCR, text-box alignment, and line-count constraints can reduce font-size, wrapping, and placement drift.
+* **Visual validation:** final delivery should include an asset wall, PPT screenshot comparison, red-box difference image, and `validation_report.json` by default.
+
 * If the original image contains numerous small icons, automated cropping and chroma-key processing may cause minor edge defects, cropping inaccuracies, or semantic mismatches. We recommend preparing transparent icon assets from authorized sources such as [iconfont.cn](https://www.iconfont.cn/) in advance, then instructing the Agent to perform replacements.
 * Slight alignment discrepancies may occur in Chinese text rendering, primarily due to font, size, line spacing differences, and PowerPoint rendering mechanisms. For higher fidelity, manual adjustments in PPT are recommended, or clearly specifying font sizes and line spacing for further agent optimization.
+
+Recommended high-fidelity workflow:
+
+```text
+Identify semantic units
+→ Decide PNG / SVG / native PPT object for each unit
+→ Generate green-screen asset grids in IMAGE GEN batches
+→ Run the cutting script to create individual transparent assets
+→ Show an asset preview wall
+→ User confirms that no assets are missing and no green details were cut away
+→ Assemble the PPT
+→ Export screenshot comparison and validation report
+```
 
 Suggested replacement prompt:
 

@@ -1,0 +1,168 @@
+{
+  "asset_review_wall": "examples\\satellite-network\\audit\\asset_review_wall.png",
+  "source": "examples\\satellite-network\\audit\\asset_manifest.json",
+  "instructions": "User confirmation gate before PPT export: confirm that no semantic assets are missing and no green object details were removed by background cutting. Mark any failed item as regenerate, replace_with_provided_asset, or remove.",
+  "assets": [
+    {
+      "asset_id": "bar_chart",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\bar_chart.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "bar_chart_green",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\bar_chart_green.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "bar_chart_orange",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\bar_chart_orange.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "brain_head",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\brain_head.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "circular_arrows",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\circular_arrows.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "collaboration_group",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\collaboration_group.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "database_stack",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\database_stack.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "document_check",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\document_check.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "ground_station",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\ground_station.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "line_pie_chart",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\line_pie_chart.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "monitor_dashboard",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\monitor_dashboard.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "network_graph",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\network_graph.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "network_graph_orange",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\network_graph_orange.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "robot_agent",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\robot_agent.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "satellite_node",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\satellite_node.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "server_gear",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\server_gear.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "server_gear_teal",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\server_gear_teal.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "server_rack",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\server_rack.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "shield_check",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\shield_check.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "space_earth_background",
+      "role": "generated_scene_background",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\space_earth_background.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "target",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\target.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "task_cube",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\task_cube.png",
+      "review_status": "needs_review",
+      "notes": ""
+    },
+    {
+      "asset_id": "wireless_status",
+      "role": "imagegen_asset",
+      "path": "examples\\satellite-network\\imagegen\\transparent-assets\\wireless_status.png",
+      "review_status": "needs_review",
+      "notes": ""
+    }
+  ]
+}
