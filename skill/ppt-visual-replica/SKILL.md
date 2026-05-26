@@ -60,11 +60,12 @@ If unsure whether a visual is semantic, classify it as `imagegen_asset`.
 3. Crop the reference and current residual image around every minimum-semantic-unit `imagegen_asset` anchor. A crop may include context for prompting, but the final cut asset must contain only that one unit.
 4. Send the full reference plus crops/residuals to imagegen/OpenAI/Gemini with prompts that request isolated white-background or chroma-key asset grids. The prompt must specify grid rows, columns, margins, gaps, background color, object order, and no text.
 5. Cut the generated grid using the declared grid geometry. Remove the white/chroma background to alpha, trim transparent borders, and store assets under `assets/`.
-6. Match generated assets back to red-box anchors. Fill matched anchor regions in the residual image with white.
-7. Visually inspect the residual. Red-box any remaining non-text semantic visuals and repeat generation/cutting/subtraction until none remain.
-8. If a user supplies an asset library, load it only as an additional source for unresolved anchors. Ask for incremental assets only after the residual loop still has unresolved semantic visuals.
-9. Build the PPTX from the generated assets and editable text/layout objects.
-10. Validate before delivery:
+6. Create an asset review wall and confirmation file before PPT assembly. Show every candidate semantic asset, including large scene panels and small icons, and ask the user to confirm two things: no semantic assets are missing, and no green parts of the objects were removed during background cutting. Do not continue to PPT export until the user confirms the reviewed assets are acceptable.
+7. Match approved generated assets back to red-box anchors. Fill matched anchor regions in the residual image with white.
+8. Visually inspect the residual. Red-box any remaining non-text semantic visuals and repeat generation/cutting/subtraction until none remain.
+9. If a user supplies an asset library, load it only as an additional source for unresolved anchors. Ask for incremental assets only after the residual loop still has unresolved semantic visuals.
+10. Build the PPTX from the approved generated assets and editable text/layout objects.
+11. Validate before delivery:
     - every minimum semantic unit has its own generated/API/user-asset source record and its own final PPT object;
     - no reference bitmap, prompt-only asset, placeholder, or hand-drawn semantic visual is used;
     - no final image asset contains multiple semantic units unless it is an approved generated scene background;
@@ -82,6 +83,8 @@ visual_inventory.json
 reference_crops/
 generated/
 assets/
+asset_review_wall.png
+asset_review.json
 residual_cycle_<n>.png
 residual_cycle_<n>_redboxes.json
 asset_match_cycle_<n>.json
@@ -96,6 +99,7 @@ validation_report.json
 - `scripts/crop_reference.py`: crop the reference or residual image from a JSON box file.
 - `scripts/generate_prompt_pack.py`: create imagegen/OpenAI/Gemini prompt rows from anchors and crops.
 - `scripts/grid_cut.py`: cut a generated asset grid using explicit rows/columns/margins/gaps or explicit cell boxes; remove background to alpha.
+- `scripts/asset_review.py`: create an asset preview wall and review JSON template for user/agent approval before PPT assembly.
 - `scripts/subtract_assets.py`: fill matched red-box regions with white to create the next residual image and mask.
 - `scripts/align_from_redboxes.py`: align manifest elements by red-box groups and declared alignment modes.
 - `scripts/balance_text_lines.py`: enforce expected line counts and shared font sizes for text groups.
@@ -124,6 +128,8 @@ Output: one clean grid image for later cell cutting.
 ## PPT Build Rules
 
 - Use the red-box `bbox` as the anchor slot for each generated asset.
+- Do not assemble the PPTX until `asset_review.json` records approval or an explicit action for each generated/provided semantic asset.
+- Treat asset review as a user confirmation gate, not an automatic defect detector. If the user reports that green object details were removed or an asset was cut incorrectly, regenerate that asset grid with a different background color.
 - Each image element must declare `semantic_unit_id` and `semantic_unit_count: 1`, except approved generated scene backgrounds.
 - Fit every image with uniform contain scaling and record `fitted_bbox`.
 - Trigger PPT alignment when red-boxes share an edge/center/gap within tolerance and match a declared alignment mode.
