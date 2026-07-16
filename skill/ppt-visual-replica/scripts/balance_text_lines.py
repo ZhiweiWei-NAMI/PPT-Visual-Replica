@@ -5,7 +5,6 @@ import argparse
 import json
 import re
 from pathlib import Path
-from typing import Any
 
 
 CJK_RE = re.compile(r"[\u3400-\u9fff]")
@@ -22,11 +21,15 @@ def split_text(text: str, lines: int) -> str:
             chunks[min(lines - 1, int(idx * lines / max(1, len(words))))].append(word)
         return "\n".join(" ".join(c).strip() for c in chunks if c)
     n = len(text)
-    return "\n".join(text[round(i * n / lines):round((i + 1) * n / lines)] for i in range(lines))
+    return "\n".join(
+        text[round(i * n / lines) : round((i + 1) * n / lines)] for i in range(lines)
+    )
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Enforce expected line counts and group font sizes.")
+    parser = argparse.ArgumentParser(
+        description="Enforce expected line counts and group font sizes."
+    )
     parser.add_argument("--manifest", required=True, type=Path)
     parser.add_argument("--rules", required=True, type=Path)
     parser.add_argument("--out", required=True, type=Path)
@@ -52,15 +55,26 @@ def main() -> None:
             continue
         size = group.get("font_size")
         if size is None:
-            sizes = [float(elements[i].get("font_size", 0)) for i in ids if elements[i].get("font_size")]
+            sizes = [
+                float(elements[i].get("font_size", 0))
+                for i in ids
+                if elements[i].get("font_size")
+            ]
             size = min(sizes) if sizes else None
         if size:
             for i in ids:
                 elements[i]["font_size"] = size
                 changed.append(i)
     args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(json.dumps({"changed": sorted(set(str(v) for v in changed)), "out": str(args.out)}, ensure_ascii=False))
+    args.out.write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    print(
+        json.dumps(
+            {"changed": sorted(set(str(v) for v in changed)), "out": str(args.out)},
+            ensure_ascii=False,
+        )
+    )
 
 
 if __name__ == "__main__":

@@ -2,12 +2,12 @@
 
 [中文 README](README.md)
 
-Precisely transform flat infographics into fully editable PowerPoint slides: text and layouts remain native PPT elements; semantic icons, devices, charts, screens, and other visual components are decomposed into independent transparent PNG assets as minimal semantic units.
+Transform flat infographics into auditable, editable PowerPoint slides. Keep text and structural layout native to PowerPoint; decompose icons, devices, charts, screens, and other semantic visuals into independent transparent assets; and require the residual, asset trace, object metadata, and rendered preview to pass closed-loop validation.
 
 ## Recommended Prompt
 
 ```text
-Use PPT REPLICA SKILL to recreate local images and IMAGE GEN to extract transparent assets. Avoid manually creating vector graphics, ensuring editability at minimal semantic units.
+Use $ppt-visual-replica to recreate the local reference. Keep text and structural geometry native to PowerPoint, and generate every semantic non-text visual with IMAGE GEN as a minimum semantic unit. Subtract an anchor from the residual only after its asset passes identity, border, alpha/chroma, and style checks; deliver only after rendered comparison and fail-closed validation.
 ```
 
 ## Project Main Visual
@@ -22,6 +22,24 @@ The core feature of this project is intelligently reconstructing the page throug
 * **Layout:** Employ native PPT elements such as panels, separators, arrows, and connectors.
 * **Semantic Visual Elements:** Extracted as transparent PNG files using IMAGE GEN or other image-capable APIs.
 * **Minimal Semantic Units:** Icons, screens, charts, and devices correspond individually selectable PPT objects.
+* **Strict Boundary:** Icons are not “basic PPT elements”; process arrows use native connector arrowhead metadata.
+* **Fail-Closed Delivery:** Missing evidence, `pending`, `to_verify`, residual/red-box disagreement, dead assets, or stale QA records fail validation.
+
+## v1.1.0: Residual and Validation Closure
+
+This release tightens the workflow around failure modes observed in real replica and review tasks, and formally clarifies the residual-cycle semantics raised in [issue #1](https://github.com/ZhiweiWei-NAMI/PPT-Visual-Replica/issues/1):
+
+* Define the residual as the batch and coverage ledger for unresolved semantic units, not an automatic enhancement loop for accepted assets.
+* Subtract only `accepted` assets whose identity, isolation, border integrity, alpha/chroma cleanliness, and style fidelity gates pass.
+* Cut only declared grid cells and report empty assets, boundary clipping, and color-key residue.
+* Embed `semantic_unit_id` metadata in every PowerPoint picture, enforce uniform contain scaling, and preserve native editable connector arrowheads.
+* Add `validate_delivery.py` to check JSON/JSONL integrity, crop/asset references, dead files, residual closure, current evidence hashes, PPTX object metadata, and accidental reference-image embedding.
+
+Run the final validator with:
+
+```text
+python skill/ppt-visual-replica/scripts/validate_delivery.py --root <output-root>
+```
 
 ## Workflow Visualization
 
@@ -45,13 +63,13 @@ Below is a representative primary example. The left image is the original refere
 
 ## Known Issues and Recommendations
 
-* If the original image contains numerous small icons, automated cropping and chroma-key processing may cause minor edge defects, cropping inaccuracies, or semantic mismatches. We recommend preparing transparent icon assets from authorized sources such as [iconfont.cn](https://www.iconfont.cn/) in advance, then instructing the Agent to perform replacements.
+* When the reference contains many small icons, automated cutting and background removal can introduce damaged edges, clipping, key-color residue, or semantic mismatches. Do not accept those assets; regenerate or recut them until the complete silhouette and borders are clean.
 * Slight alignment discrepancies may occur in Chinese text rendering, primarily due to font, size, line spacing differences, and PowerPoint rendering mechanisms. For higher fidelity, manual adjustments in PPT are recommended, or clearly specifying font sizes and line spacing for further agent optimization.
 
 Suggested replacement prompt:
 
 ```text
-I have placed replacement icons in the assets/user-icons/ folder. Use these transparent PNGs to replace the corresponding semantic units: database_stack, server_rack, monitor_dashboard. Ensure original bounding boxes, dimensions, and minimal semantic editability within PPT are maintained, and record in asset_manifest.json as provided_asset.
+I have placed authorized replacement icons in assets/user-icons/. Replace only the corresponding semantic units database_stack, server_rack, and monitor_dashboard. Preserve their anchor boxes and minimum-unit editability; record source_type=user_asset, provenance, and user approval in asset_manifest.json; then rerun rendering and the complete validation suite.
 ```
 
 ## Skill Installation
