@@ -1,3 +1,4 @@
-display_name: PPT Visual Replica
-short_description: Recreate reference infographics as editable PPTX with minimum semantic units as independent generated assets.
-default_prompt: Recreate the provided reference image as an editable PowerPoint deck. Split every visible element into the smallest independently draggable semantic unit; treat every semantic non-text unit as an imagegen/API-generated asset, iterate residual red boxes until no semantic visuals remain, and preserve text line counts and image aspect ratios.
+interface:
+  display_name: "PPT Visual Replica"
+  short_description: "Faithful editable PPT replicas with strict asset validation"
+  default_prompt: "Use $ppt-visual-replica to recreate this reference as an editable PPTX and deliver it only after residual, asset, metadata, and rendered-preview validation pass."
