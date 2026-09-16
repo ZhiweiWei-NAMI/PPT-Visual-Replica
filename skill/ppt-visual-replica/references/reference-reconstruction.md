@@ -26,6 +26,10 @@ Exact vector editability and editable image placement are different deliverables
 
 Keep independently edited labels and components separate when practical. Group a simple icon's shapes for convenient editing. Do not fragment a photograph into arbitrary objects.
 
+## Optional asset batch check
+
+When generated or cut images are numerous, use the [asset review wall](asset-review.md) to compare source regions and candidate images before assembly. Keep this proportional to the task and do not require a user response unless requested.
+
 ## Review
 
 Compare the rendered result at full-slide scale and zoom into dense regions. Check text, object coverage, relative size, baseline alignment, border completeness, and image aspect ratios. For a multi-slide reference deck, also check consistency with its masters and theme.

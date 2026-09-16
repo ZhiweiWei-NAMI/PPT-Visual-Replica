@@ -47,11 +47,16 @@ If rendering or application verification is unavailable, report that limitation 
 
 Deliver the requested presentation and useful previews or source assets. Keep manifests, residuals, and diagnostic files only when they support the requested audit or continued editing. Do not make a large evidence package a condition of ordinary delivery.
 
+## Optional asset review
+
+For a batch of image assets, use [asset review](references/asset-review.md) to compare reference crops and candidates, identify missing inventory items, and keep content-bound review records. The agent can review and continue; require user confirmation only when the user requested it or a material ambiguity needs their decision. Generating a wall is not approval.
+
 ## Bundled tools
 
 Run scripts with `--help` for their arguments. Paths below are relative to this skill's root.
 
 - `scripts/crop_reference.py`: crop regions for inspection or asset generation.
+- `scripts/asset_review.py`: optional reference/candidate preview wall and persistent review records; see the asset review guide.
 - `scripts/grid_cut.py`: split a generated asset grid and inspect transparency/borders.
 - `scripts/align_from_redboxes.py`, `scripts/balance_text_lines.py`: adjust manifests used by the strict builder.
 - `scripts/generate_prompt_pack.py`, `scripts/subtract_assets.py`, `scripts/build_pptx.py`, `scripts/validate_delivery.py`: the strict generated-asset pipeline described in its reference. Their narrow schemas and validation rules apply only to that mode.

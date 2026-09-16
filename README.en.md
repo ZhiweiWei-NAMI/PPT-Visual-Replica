@@ -45,6 +45,14 @@ Strict-mode validation:
 python skill/ppt-visual-replica/scripts/validate_delivery.py --root <output-root>
 ```
 
+## Optional asset review wall (#2)
+
+For image batches or complex replicas, `asset_review.py` displays reference/candidate pairs and reports missing items against an independent inventory. The agent normally reviews and continues; user confirmation is required only when requested.
+
+The tool does not detect lost green details automatically or infer approval from rendering. Unchanged evidence retains review decisions; changed pixels or reference context invalidate them. Exact path maps replace unsafe basename fallback.
+
+See the [workflow guide](skill/ppt-visual-replica/references/asset-review.md) and [example wall](examples/satellite-network/audit/asset_review_wall.png). The wall was regenerated; its assets remain unreviewed and do not constitute revalidation of the original example.
+
 ## Installation
 
 Use the Codex Skill Installer:

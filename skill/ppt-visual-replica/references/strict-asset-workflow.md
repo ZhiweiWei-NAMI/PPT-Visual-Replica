@@ -71,6 +71,10 @@ Treat the residual cycle primarily as batch and coverage tracking, not as a loop
 
 Regenerating a rejected asset is asset-level quality refinement. It does not change the residual’s role as the authoritative ledger of unresolved coverage.
 
+## Optional review wall
+
+Use [asset review](asset-review.md) between cutting and assembly when a contact sheet helps inspect a batch. It supplements asset acceptance and does not introduce a mandatory user-approval step. File availability, visual review, and user approval are separate states.
+
 ## Core Workflow
 
 1. Create one clean output root and copy the input image to `reference.png`.

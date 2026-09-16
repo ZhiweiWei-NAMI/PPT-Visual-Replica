@@ -45,6 +45,14 @@
 python skill/ppt-visual-replica/scripts/validate_delivery.py --root <output-root>
 ```
 
+## 素材预览墙（#2）
+
+批量切图或复杂复刻时，可用 `asset_review.py` 并排查看参考裁剪和候选素材，检查细节丢失，并对照独立清单显示缺失项。默认由助手检查后继续；仅在用户要求时等待人工确认。
+
+工具不会自动判定绿色细节是否被误删，也不会把生成预览墙当作审阅通过。重新运行会保留未变化素材的审阅记录；素材或参考内容变化时需要重新检查。路径替换使用明确映射，不按同名文件猜测。
+
+见[操作说明](skill/ppt-visual-replica/references/asset-review.md)和[示例预览墙](examples/satellite-network/audit/asset_review_wall.png)。示例墙已重新生成，但所有素材仍标为待审阅，不能视作原示例重新验收通过。
+
 ## 安装
 
 通过 Codex Skill Installer 安装：

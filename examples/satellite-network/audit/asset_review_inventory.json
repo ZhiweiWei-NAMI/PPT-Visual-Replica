@@ -1,0 +1,229 @@
+{
+  "items": [
+    {
+      "asset_id": "bar_chart",
+      "role": "imagegen_asset",
+      "bbox": [
+        1068,
+        135,
+        57,
+        49
+      ]
+    },
+    {
+      "asset_id": "bar_chart_green",
+      "role": "imagegen_asset",
+      "bbox": [
+        925,
+        717,
+        64,
+        44
+      ]
+    },
+    {
+      "asset_id": "bar_chart_orange",
+      "role": "imagegen_asset",
+      "bbox": [
+        705,
+        716,
+        61,
+        45
+      ]
+    },
+    {
+      "asset_id": "brain_head",
+      "role": "imagegen_asset",
+      "bbox": [
+        312,
+        845,
+        45,
+        49
+      ]
+    },
+    {
+      "asset_id": "circular_arrows",
+      "role": "imagegen_asset",
+      "bbox": [
+        1274,
+        848,
+        43,
+        40
+      ]
+    },
+    {
+      "asset_id": "collaboration_group",
+      "role": "imagegen_asset",
+      "bbox": [
+        56,
+        551,
+        127,
+        66
+      ]
+    },
+    {
+      "asset_id": "database_stack",
+      "role": "imagegen_asset",
+      "bbox": [
+        686,
+        136,
+        45,
+        50
+      ]
+    },
+    {
+      "asset_id": "document_check",
+      "role": "imagegen_asset",
+      "bbox": [
+        359,
+        469,
+        35,
+        38
+      ]
+    },
+    {
+      "asset_id": "ground_station",
+      "role": "imagegen_asset",
+      "bbox": [
+        1359,
+        197,
+        60,
+        62
+      ]
+    },
+    {
+      "asset_id": "line_pie_chart",
+      "role": "imagegen_asset",
+      "bbox": [
+        597,
+        344,
+        139,
+        47
+      ]
+    },
+    {
+      "asset_id": "monitor_dashboard",
+      "role": "imagegen_asset",
+      "bbox": [
+        1310,
+        647,
+        207,
+        135
+      ]
+    },
+    {
+      "asset_id": "network_graph",
+      "role": "imagegen_asset",
+      "bbox": [
+        831,
+        342,
+        143,
+        51
+      ]
+    },
+    {
+      "asset_id": "network_graph_orange",
+      "role": "imagegen_asset",
+      "bbox": [
+        635,
+        845,
+        49,
+        45
+      ]
+    },
+    {
+      "asset_id": "robot_agent",
+      "role": "imagegen_asset",
+      "bbox": [
+        683,
+        500,
+        46,
+        45
+      ]
+    },
+    {
+      "asset_id": "satellite_node",
+      "role": "imagegen_asset",
+      "bbox": [
+        1511,
+        117,
+        45,
+        39
+      ]
+    },
+    {
+      "asset_id": "server_gear",
+      "role": "imagegen_asset",
+      "bbox": [
+        953,
+        846,
+        57,
+        43
+      ]
+    },
+    {
+      "asset_id": "server_gear_teal",
+      "role": "imagegen_asset",
+      "bbox": [
+        953,
+        846,
+        57,
+        43
+      ]
+    },
+    {
+      "asset_id": "server_rack",
+      "role": "imagegen_asset",
+      "bbox": [
+        356,
+        509,
+        43,
+        39
+      ]
+    },
+    {
+      "asset_id": "shield_check",
+      "role": "imagegen_asset",
+      "bbox": [
+        1418,
+        353,
+        41,
+        44
+      ]
+    },
+    {
+      "asset_id": "space_earth_background",
+      "role": "generated_scene_background"
+    },
+    {
+      "asset_id": "target",
+      "role": "imagegen_asset",
+      "bbox": [
+        173,
+        844,
+        67,
+        64
+      ]
+    },
+    {
+      "asset_id": "task_cube",
+      "role": "imagegen_asset",
+      "bbox": [
+        1509,
+        181,
+        30,
+        30
+      ]
+    },
+    {
+      "asset_id": "wireless_status",
+      "role": "imagegen_asset",
+      "bbox": [
+        355,
+        551,
+        45,
+        35
+      ]
+    }
+  ],
+  "description": "Manually selected source-image regions for asset-level comparison; composite background has no isolated source crop. This inventory is not a claim of full-slide coverage."
+}
