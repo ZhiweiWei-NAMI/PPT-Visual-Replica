@@ -1,4 +1,4 @@
 interface:
   display_name: "PPT Visual Replica"
   short_description: "Editable replicas and evidence-based scientific slides"
-  default_prompt: "Use $ppt-visual-replica to create or revise an editable presentation from these sources, matching any supplied visual reference and verifying the rendered result."
+  default_prompt: "Use $ppt-visual-replica to create an editable presentation from these sources: generate each slide draft with $imagegen first, reconstruct it as editable PPTX, then verify the rendered result."

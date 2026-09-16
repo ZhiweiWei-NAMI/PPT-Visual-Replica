@@ -1,6 +1,6 @@
 ---
 name: ppt-visual-replica
-description: Create and edit editable PowerPoint decks, recreate slides or infographics from reference images, and develop scientific talks, teaching slides, and thesis defenses. Choose visual fidelity, scientific evidence, and editability according to the user's requested deliverable.
+description: Create and edit editable PowerPoint decks, recreate slides or infographics from reference images, and develop scientific talks, teaching slides, and thesis defenses by generating slide drafts with imagegen first and then reconstructing editable PPTX. Choose visual fidelity, scientific evidence, and editability according to the user's requested deliverable.
 ---
 
 # PPT Visual Replica
@@ -10,7 +10,7 @@ Produce the requested presentation with readable content, faithful visuals where
 ## Choose the task
 
 - **Reference reconstruction:** Match the supplied image or deck's hierarchy, proportions, typography, colors, and meaningful objects. See [reference reconstruction](references/reference-reconstruction.md).
-- **Scientific or teaching presentation:** Build the explanation from supplied papers, data, notes, and figures. See [scientific presentations](references/scientific-presentations.md).
+- **Scientific or teaching presentation:** Organize the supplied papers, data, notes, and figures; use the `imagegen` skill to generate a visual draft of every slide first; then reconstruct those drafts as editable PPTX. This order is required. Follow [scientific presentations](references/scientific-presentations.md).
 - **Existing deck edit:** Preserve its theme, master layouts, content order, and unmodified slides unless the requested change requires otherwise.
 - **Strict generated-asset reconstruction:** Use [strict asset workflow](references/strict-asset-workflow.md) only when the user explicitly requests its per-asset generation, residual tracking, and full audit artifacts. It is a specialized compatibility mode, not a prerequisite for ordinary delivery.
 
@@ -22,6 +22,12 @@ Use the user's format, template, language, slide count, duration, and supplied s
 
 For new decks without a specified size, 16:9 is a reasonable starting point. Respect an existing deck's dimensions. Use installed fonts that support the content language, and report substitutions that affect fidelity.
 
+## Required order for new scientific and teaching decks
+
+Source material → slide content plan → `imagegen` full-slide visual drafts → editable reconstruction → rendered comparison and source verification.
+
+Every planned slide needs a generated draft before reconstruction. Do not substitute a cover image, a few generated icons, or direct PowerPoint coding for this stage. Save the selected drafts with the project. Generated figures and text must not override real data, equations, or citations. Native shapes, vectors, and supplied assets remain valid choices during reconstruction. This requirement applies to new decks from source material; existing-image reconstruction and targeted edits retain their own routes.
+
 ## Choose the simplest suitable representation
 
 - Keep titles, labels, equations where supported, tables, and explanatory text editable.
@@ -29,7 +35,7 @@ For new decks without a specified size, 16:9 is a reasonable starting point. Res
 - Build charts from real data when it is available. Never manufacture measurements to imitate a chart.
 - Reuse supplied figures and suitable licensed assets. Preserve sources and attribution where required.
 - Use vector artwork when the target application supports it reliably. If conversion to a bitmap is necessary, disclose the resulting editability limit.
-- Generate illustrations when they materially help and available tools support the task. No image-generation provider, API key, or external skill is mandatory.
+- For new scientific and teaching decks, use the installed `imagegen` skill for full-slide drafts before reconstruction. Additional isolated illustrations are optional. Follow imagegen's built-in-tool and fallback rules; do not silently skip the required generation stage.
 - Treat an imported picture as an editable picture object, not editable internal geometry. State this distinction when it matters.
 - Do not flatten a whole slide into an image when the user expects editable text and components. A supplied photograph or complex scientific figure may remain a single image if that fits the request.
 

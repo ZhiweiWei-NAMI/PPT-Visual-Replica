@@ -1,6 +1,21 @@
 # Scientific and teaching presentations
 
-This guide incorporates the useful planning, scientific-figure, and speaking principles of the former scientific-slides skill, without its provider-specific generation workflow or mandatory figure quotas.
+Create scientific and teaching decks through imagegen-generated slide drafts followed by editable PowerPoint reconstruction. The planning, evidence, and speaking guidance below supports that required workflow.
+
+## Required imagegen-first workflow
+
+For a new scientific, teaching, or thesis-defense deck made from papers, data, or notes, follow this sequence:
+
+1. Ground the slide content in the supplied material: outline each page's message, exact text, equations, data, and sources.
+2. Read and use the installed `imagegen` skill. Generate a full-slide visual draft for every planned page with its built-in image generation tool, using consistent style references and the supplied scientific figures where appropriate. A cover image or a few decorative assets do not satisfy this step.
+3. Inspect each generated page against the source material, correct visual/content problems, and save the selected slide drafts in the project. Keep original data and figures authoritative: generated text, plots, and numbers are not new evidence.
+4. Use those generated pages as the visual references for [editable reconstruction](reference-reconstruction.md). Rebuild titles, body text, equations where supported, tables, simple diagrams, and connectors as editable PPT objects; use real data or original figures for scientific results.
+5. Render the PPTX and compare each reconstructed slide with its generated draft. Check the source material again for text, values, equations, citations, and scientific meaning.
+6. Deliver the editable PPTX and the generated reference drafts needed to review or continue editing it.
+
+Do not skip slide-draft generation by going directly from an outline to PowerPoint code. Do not use an image-only slide deck as the editable deliverable. Native shapes and supplied assets are reconstruction choices after generation, not substitutes for the required first stage.
+
+Use imagegen's built-in tool by default. If it is unavailable, report the limitation and follow the imagegen skill's fallback rules; do not silently bypass generation or switch providers. Inspect and proceed autonomously unless the user explicitly requested draft approval or a material content ambiguity requires their input.
 
 ## Plan around the audience and evidence
 

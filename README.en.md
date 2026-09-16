@@ -2,7 +2,7 @@
 
 [中文说明](README.md)
 
-Recreate reference images as editable PowerPoint slides, or develop scientific talks, teaching decks, and thesis defenses from papers, data, and notes. The skill integrates scientific-slides planning principles with visual reconstruction, selecting native objects, supplied assets, vectors, or generated illustrations as appropriate.
+Recreate reference images as editable PowerPoint slides, or develop scientific talks, teaching decks, and thesis defenses from papers, data, and notes. For scientific talks, teaching decks, and thesis defenses, first generate every slide's visual draft with `imagegen`, then reconstruct those drafts as editable PPTX.
 
 ## Example requests
 
@@ -15,7 +15,8 @@ Match the reference's proportions, hierarchy, and colors, then inspect a render.
 ```text
 Use $ppt-visual-replica to develop a 15-minute research talk from these papers
 and experimental figures. Explain the question, methods, results, and limits.
-Preserve real data and citations; deliver an editable PPTX.
+Preserve real data and citations. Use $imagegen to generate each slide draft first,
+then reconstruct it as editable PPTX and compare the rendered result with the drafts.
 ```
 
 ## Project Main Visual
@@ -27,10 +28,10 @@ Preserve real data and citations; deliver an editable PPTX.
 | Task | Approach |
 | --- | --- |
 | Reference reconstruction | Match the supplied visual while choosing object types for the requested editability |
-| Scientific and teaching decks | Organize content around the audience, time, evidence, figures, equations, and sources |
+| Scientific and teaching decks | Plan content → generate each slide with imagegen → reconstruct editable PPTX → verify renders and evidence |
 | Existing deck edits | Preserve the theme and inspect changed slides plus slides affected by shared styles |
 
-No particular image-generation provider, fixed illustration quota, slide-image PDF workflow, or skill named research-lookup is required. An editable picture object does not make its internal geometry editable; disclose that distinction when relevant.
+For new decks from papers, data, or teaching materials, the `imagegen` skill is required before reconstruction. Do not skip generation by directly coding the slides, or deliver full-slide images as an editable deck. Native objects, vectors, and supplied assets remain available during reconstruction. Original data, equations, and citations remain authoritative; generated visuals cannot replace experimental evidence.
 
 ## Optional strict asset workflow
 
@@ -53,7 +54,7 @@ python skill/ppt-visual-replica/scripts/validate_delivery.py --root <output-root
 
 ![Workflow visual placeholder](assets/readme/workflow-visual.png)
 
-The diagram shows the original strict reconstruction workflow. Ordinary decks can use native objects and supplied assets as appropriate; the asset review wall is an optional additional check.
+The diagram shows the original strict reconstruction workflow. New scientific and teaching decks first require imagegen-generated slide drafts, then reconstruction using appropriate native objects and supplied assets. The asset review wall remains an optional check.
 
 ## Optional asset review wall (#2)
 
@@ -98,4 +99,4 @@ These examples predate the merge and illustrate the strict workflow. They were n
 
 ## License
 
-See [LICENSE](LICENSE). The scientific presentation guidance consolidates and rewrites narrative, figure adaptation, and talk-planning concepts from scientific-slides. Its external generation scripts, templates, and mandatory image-generation workflow are not included.
+See [LICENSE](LICENSE). The scientific presentation guidance consolidates and rewrites narrative, figure adaptation, and talk-planning concepts from scientific-slides. Its external generation scripts and templates are not included; slide drafts are generated through the imagegen skill.
