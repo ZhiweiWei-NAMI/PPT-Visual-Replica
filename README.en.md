@@ -18,6 +18,10 @@ and experimental figures. Explain the question, methods, results, and limits.
 Preserve real data and citations; deliver an editable PPTX.
 ```
 
+## Project Main Visual
+
+![Hero visual placeholder](assets/readme/hero-visual.png)
+
 ## Supported work
 
 | Task | Approach |
@@ -44,6 +48,12 @@ Strict-mode validation:
 ```text
 python skill/ppt-visual-replica/scripts/validate_delivery.py --root <output-root>
 ```
+
+## Workflow Visualization
+
+![Workflow visual placeholder](assets/readme/workflow-visual.png)
+
+The diagram shows the original strict reconstruction workflow. Ordinary decks can use native objects and supplied assets as appropriate; the asset review wall is an optional additional check.
 
 ## Optional asset review wall (#2)
 

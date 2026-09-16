@@ -18,6 +18,10 @@
 提供可编辑 PPTX；只在有助于解释时增加插图。
 ```
 
+## 项目主视觉
+
+![Hero visual placeholder](assets/readme/hero-visual.png)
+
 ## 三种常用任务
 
 | 任务 | 做法 |
@@ -44,6 +48,12 @@
 ```text
 python skill/ppt-visual-replica/scripts/validate_delivery.py --root <output-root>
 ```
+
+## 工作流示意
+
+![Workflow visual placeholder](assets/readme/workflow-visual.png)
+
+上图展示原有严格复刻流程；普通演示文稿可按任务选择原生对象和已有素材。素材预览墙是新增的按需检查步骤。
 
 ## 素材预览墙（#2）
 
@@ -91,3 +101,13 @@ python skill/ppt-visual-replica/scripts/audit_skill.py --root skill/ppt-visual-r
 ## 许可
 
 见 [LICENSE](LICENSE)。科研演示指导整合并重新编写了 scientific-slides 中的叙事、图表适配和演讲规划思路；未引入其外部生图脚本、模板或强制生图流程。
+
+## Star History
+
+<a href="https://www.star-history.com/?repos=ZhiweiWei-NAMI%2FPPT-Visual-Replica&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=ZhiweiWei-NAMI/PPT-Visual-Replica&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=ZhiweiWei-NAMI/PPT-Visual-Replica&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=ZhiweiWei-NAMI/PPT-Visual-Replica&type=date&legend=top-left" />
+ </picture>
+</a>
