@@ -1,102 +1,83 @@
 # PPT Visual Replica
 
-[中文 README](README.md)
+[中文说明](README.md)
 
-Transform flat infographics into auditable, editable PowerPoint slides. Keep text and structural layout native to PowerPoint; decompose icons, devices, charts, screens, and other semantic visuals into independent transparent assets; and require the residual, asset trace, object metadata, and rendered preview to pass closed-loop validation.
+Recreate reference images as editable PowerPoint slides, or develop scientific talks, teaching decks, and thesis defenses from papers, data, and notes. The skill integrates scientific-slides planning principles with visual reconstruction, selecting native objects, supplied assets, vectors, or generated illustrations as appropriate.
 
-## Recommended Prompt
+## Example requests
 
 ```text
-Use $ppt-visual-replica to recreate the local reference. Keep text and structural geometry native to PowerPoint, and generate every semantic non-text visual with IMAGE GEN as a minimum semantic unit. Subtract an anchor from the residual only after its asset passes identity, border, alpha/chroma, and style checks; deliver only after rendered comparison and fail-closed validation.
+Use $ppt-visual-replica to recreate this reference as an editable PPTX.
+Keep text editable and use native shapes and connectors for simple diagrams.
+Match the reference's proportions, hierarchy, and colors, then inspect a render.
 ```
 
-## Project Main Visual
+```text
+Use $ppt-visual-replica to develop a 15-minute research talk from these papers
+and experimental figures. Explain the question, methods, results, and limits.
+Preserve real data and citations; deliver an editable PPTX.
+```
 
-![Hero visual placeholder](assets/readme/hero-visual.png)
+## Supported work
 
-## Quick Start
+| Task | Approach |
+| --- | --- |
+| Reference reconstruction | Match the supplied visual while choosing object types for the requested editability |
+| Scientific and teaching decks | Organize content around the audience, time, evidence, figures, equations, and sources |
+| Existing deck edits | Preserve the theme and inspect changed slides plus slides affected by shared styles |
 
-The core feature of this project is intelligently reconstructing the page through an AI agent based on these guidelines:
+No particular image-generation provider, fixed illustration quota, slide-image PDF workflow, or skill named research-lookup is required. An editable picture object does not make its internal geometry editable; disclose that distinction when relevant.
 
-* **Text Content:** Utilize native PPT text boxes for easy future edits.
-* **Layout:** Employ native PPT elements such as panels, separators, arrows, and connectors.
-* **Semantic Visual Elements:** Extracted as transparent PNG files using IMAGE GEN or other image-capable APIs.
-* **Minimal Semantic Units:** Icons, screens, charts, and devices correspond individually selectable PPT objects.
-* **Strict Boundary:** Icons are not “basic PPT elements”; process arrows use native connector arrowhead metadata.
-* **Fail-Closed Delivery:** Missing evidence, `pending`, `to_verify`, residual/red-box disagreement, dead assets, or stale QA records fail validation.
+## Optional strict asset workflow
 
-## v1.1.0: Residual and Validation Closure
+The original generated-asset, residual, hash, and object-metadata pipeline remains available when explicitly requested. Its script interfaces remain compatible.
 
-This release tightens the workflow around failure modes observed in real replica and review tasks, and formally clarifies the residual-cycle semantics raised in [issue #1](https://github.com/ZhiweiWei-NAMI/PPT-Visual-Replica/issues/1):
+- [Skill entrypoint](skill/ppt-visual-replica/SKILL.md)
+- [Reference reconstruction](skill/ppt-visual-replica/references/reference-reconstruction.md)
+- [Scientific presentations](skill/ppt-visual-replica/references/scientific-presentations.md)
+- [Strict workflow and artifact contracts](skill/ppt-visual-replica/references/strict-asset-workflow.md)
 
-* Define the residual as the batch and coverage ledger for unresolved semantic units, not an automatic enhancement loop for accepted assets.
-* Subtract only `accepted` assets whose identity, isolation, border integrity, alpha/chroma cleanliness, and style fidelity gates pass.
-* Cut only declared grid cells and report empty assets, boundary clipping, and color-key residue.
-* Embed `semantic_unit_id` metadata in every PowerPoint picture, enforce uniform contain scaling, and preserve native editable connector arrowheads.
-* Add `validate_delivery.py` to check JSON/JSONL integrity, crop/asset references, dead files, residual closure, current evidence hashes, PPTX object metadata, and accidental reference-image embedding.
+`build_pptx.py` is a single-slide strict-mode builder. `validate_delivery.py` validates that mode's specialized artifact directory. They are not general multi-slide authoring or validation tools. Use an appropriate presentation library/application for ordinary decks and inspect the render and editability.
 
-Run the final validator with:
+Strict-mode validation:
 
 ```text
 python skill/ppt-visual-replica/scripts/validate_delivery.py --root <output-root>
 ```
 
-## Workflow Visualization
+## Installation
 
-![Workflow visual placeholder](assets/readme/workflow-visual.png)
-
-## Example Showcase: Satellite Network Diagram
-
-Below is a representative primary example. The left image is the original reference, while the right shows the fully selected editable elements in the PPT replica. Shown results represent the first-pass generation (Pass@1), accurately capturing the overall structure but may require slight adjustments in icons, details, and text alignment.
-
-| Original Reference                                                         | Editable PPT Objects Selected                                                 |
-| -------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| ![Satellite reference](examples/satellite-network/reference/reference.png) | ![Satellite selected elements](assets/readme/satellite-selected-elements.png) |
-
-## Additional Examples
-
-| Example                                                        | Description                                                              |
-| -------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| [`satellite-network`](examples/satellite-network/)             | Heterogeneous satellite network architecture, typical academic use case. |
-| [`medical-ai-pipeline`](examples/medical-ai-pipeline/)         | Multimodal medical AI-assisted diagnostic workflow.                      |
-| [`manufacturing-scheduler`](examples/manufacturing-scheduler/) | Intelligent manufacturing multi-robot scheduling example.                |
-
-## Known Issues and Recommendations
-
-* When the reference contains many small icons, automated cutting and background removal can introduce damaged edges, clipping, key-color residue, or semantic mismatches. Do not accept those assets; regenerate or recut them until the complete silhouette and borders are clean.
-* Slight alignment discrepancies may occur in Chinese text rendering, primarily due to font, size, line spacing differences, and PowerPoint rendering mechanisms. For higher fidelity, manual adjustments in PPT are recommended, or clearly specifying font sizes and line spacing for further agent optimization.
-
-Suggested replacement prompt:
-
-```text
-I have placed authorized replacement icons in assets/user-icons/. Replace only the corresponding semantic units database_stack, server_rack, and monitor_dashboard. Preserve their anchor boxes and minimum-unit editability; record source_type=user_asset, provenance, and user approval in asset_manifest.json; then rerun rendering and the complete validation suite.
-```
-
-## Skill Installation
-
-Recommended installation through Codex Skill Installer from the GitHub repository path:
+Use the Codex Skill Installer:
 
 ```text
 $skill-installer install https://github.com/ZhiweiWei-NAMI/PPT-Visual-Replica/tree/main/skill/ppt-visual-replica
 ```
 
-Manual clone-and-copy installation is also supported:
+Alternatively, copy `skill/ppt-visual-replica` into your skills directory. Preserve personal changes before updating an existing installation.
 
-**Windows:**
+The bundled Python helpers use Python 3.10+, Pillow, and python-pptx. The skill validator also needs PyYAML. Ordinary deck-authoring dependencies depend on the selected tool; visual review needs PowerPoint, LibreOffice, or another renderer.
 
-```powershell
-git clone https://github.com/ZhiweiWei-NAMI/PPT-Visual-Replica.git
-Copy-Item -Recurse .\PPT-Visual-Replica\skill\ppt-visual-replica "$env:USERPROFILE\.codex\skills\"
+## Verification
+
+```text
+python -m unittest discover -s tests -v
+python skill/ppt-visual-replica/scripts/audit_skill.py --root skill/ppt-visual-replica
 ```
 
-**macOS/Linux:**
+Script tests do not replace visual review of a final deck. If rendering is unavailable, state what remains unverified.
 
-```bash
-git clone https://github.com/ZhiweiWei-NAMI/PPT-Visual-Replica.git
-mkdir -p ~/.codex/skills
-cp -R PPT-Visual-Replica/skill/ppt-visual-replica ~/.codex/skills/
-```
+## Existing examples
 
-Restart Codex after installation so the new skill is loaded.
+These examples predate the merge and illustrate the strict workflow. They were not regenerated or revalidated as part of the skill update.
 
----
+- [Satellite network](examples/satellite-network/)
+- [Medical AI pipeline](examples/medical-ai-pipeline/)
+- [Manufacturing scheduler](examples/manufacturing-scheduler/)
+
+| Reference | Selected PowerPoint objects |
+| --- | --- |
+| ![Satellite reference](examples/satellite-network/reference/reference.png) | ![Satellite selected elements](assets/readme/satellite-selected-elements.png) |
+
+## License
+
+See [LICENSE](LICENSE). The scientific presentation guidance consolidates and rewrites narrative, figure adaptation, and talk-planning concepts from scientific-slides. Its external generation scripts, templates, and mandatory image-generation workflow are not included.
